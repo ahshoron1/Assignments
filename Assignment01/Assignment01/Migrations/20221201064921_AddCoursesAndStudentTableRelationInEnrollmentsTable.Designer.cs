@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Assignment01.Migrations
 {
     [DbContext(typeof(TrainingContext))]
-    [Migration("20221201031023_AddStudentsTableChangeStringLength")]
-    partial class AddStudentsTableChangeStringLength
+    [Migration("20221201064921_AddCoursesAndStudentTableRelationInEnrollmentsTable")]
+    partial class AddCoursesAndStudentTableRelationInEnrollmentsTable
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -36,12 +36,14 @@ namespace Assignment01.Migrations
                     b.Property<int>("DurationInHours")
                         .HasColumnType("int");
 
-                    b.Property<double>("Fees")
-                        .HasColumnType("float");
+                    b.Property<decimal>("Fees")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.HasKey("Id");
 
@@ -76,7 +78,8 @@ namespace Assignment01.Migrations
 
                     b.Property<string>("Address")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
 
                     b.Property<DateTime>("DateOfBirth")
                         .HasColumnType("datetime2");

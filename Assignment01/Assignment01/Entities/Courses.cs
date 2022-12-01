@@ -17,7 +17,8 @@ namespace Assignment01.Entities
         [StringLength(100)]
         public string Title { get; set; }
 
-        public double Fees { get; set; }
+        [Precision(18,2)]
+        public decimal Fees { get; set; }
         public int DurationInHours { get; set; }
 
         public List<Enrollments> EnrollmentCourses { get; set; }

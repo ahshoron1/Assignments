@@ -5,7 +5,7 @@
 namespace Assignment01.Migrations
 {
     /// <inheritdoc />
-    public partial class Updated : Migration
+    public partial class AddCoursesTableAndStudentTableRelationinEnrollmentsTable : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

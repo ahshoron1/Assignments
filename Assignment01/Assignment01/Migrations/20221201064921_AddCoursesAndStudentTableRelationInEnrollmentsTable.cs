@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Assignment01.Migrations
 {
     /// <inheritdoc />
-    public partial class AddEnroolmentsTableRelations : Migration
+    public partial class AddCoursesAndStudentTableRelationInEnrollmentsTable : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

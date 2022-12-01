@@ -33,8 +33,9 @@ namespace Assignment01.Migrations
                     b.Property<int>("DurationInHours")
                         .HasColumnType("int");
 
-                    b.Property<double>("Fees")
-                        .HasColumnType("float");
+                    b.Property<decimal>("Fees")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Title")
                         .IsRequired()

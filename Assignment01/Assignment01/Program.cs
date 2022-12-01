@@ -10,7 +10,7 @@ namespace Assignment01
         static void Main(string[] args)
         {
             //===============Insert Data Student Table==============//
-            //using(var context = new TrainingContext())
+            //using (var context = new TrainingContext())
             //{
             //    var student = new Students()
             //    {
@@ -46,7 +46,7 @@ namespace Assignment01
             //{
             //    var course = new Courses()
             //    {
-            //        Title = "C#",
+            //        Title = "c#",
             //        Fees = 8000,
             //        DurationInHours = 148
             //    };
@@ -75,7 +75,7 @@ namespace Assignment01
             // =============== Course && Student Table Relaton in Enrollments Table ============== //
             using (var context = new TrainingContext())
             {
-                var course = context.Courses.Where(x => x.Id == 4).FirstOrDefault();
+                var course = context.Courses.Where(x => x.Id == 1).FirstOrDefault();
                 var student = context.Students.Where(x => x.Id == 1).FirstOrDefault();
                 course.EnrollmentCourses = new List<Enrollments>();
                 course.EnrollmentCourses.Add(new Enrollments { Student = student, EnrollDate = DateTime.Now });

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Assignment01.Migrations
 {
     [DbContext(typeof(TrainingContext))]
-    [Migration("20221201033343_AddCoursesTableChangeTitleStringLength")]
-    partial class AddCoursesTableChangeTitleStringLength
+    [Migration("20221201062935_AddCoursesTable")]
+    partial class AddCoursesTable
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -36,8 +36,9 @@ namespace Assignment01.Migrations
                     b.Property<int>("DurationInHours")
                         .HasColumnType("int");
 
-                    b.Property<double>("Fees")
-                        .HasColumnType("float");
+                    b.Property<decimal>("Fees")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -47,24 +48,6 @@ namespace Assignment01.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Courses");
-                });
-
-            modelBuilder.Entity("Assignment01.Entities.Enrollments", b =>
-                {
-                    b.Property<int>("CourseId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("StudentId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("EnrollDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("CourseId", "StudentId");
-
-                    b.HasIndex("StudentId");
-
-                    b.ToTable("Enrollments");
                 });
 
             modelBuilder.Entity("Assignment01.Entities.Students", b =>
@@ -91,35 +74,6 @@ namespace Assignment01.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Students");
-                });
-
-            modelBuilder.Entity("Assignment01.Entities.Enrollments", b =>
-                {
-                    b.HasOne("Assignment01.Entities.Courses", "Course")
-                        .WithMany("EnrollmentCourses")
-                        .HasForeignKey("CourseId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Assignment01.Entities.Students", "Student")
-                        .WithMany("EnrollmentStudent")
-                        .HasForeignKey("StudentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Course");
-
-                    b.Navigation("Student");
-                });
-
-            modelBuilder.Entity("Assignment01.Entities.Courses", b =>
-                {
-                    b.Navigation("EnrollmentCourses");
-                });
-
-            modelBuilder.Entity("Assignment01.Entities.Students", b =>
-                {
-                    b.Navigation("EnrollmentStudent");
                 });
 #pragma warning restore 612, 618
         }
